@@ -1,0 +1,1 @@
+C:\Users\LTG\Documents\GitHub\PC_locker\bin\Debug\LockPC.exe.config
