@@ -37,6 +37,10 @@
             this.icon = new System.Windows.Forms.NotifyIcon(this.components);
             this.iconCM = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.information = new System.Windows.Forms.Label();
+            this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.模式1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iconCM.SuspendLayout();
             this.SuspendLayout();
             // 
             // passwordBox
@@ -87,8 +91,12 @@
             // 
             // iconCM
             // 
+            this.iconCM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.模式1ToolStripMenuItem,
+            this.设置ToolStripMenuItem,
+            this.退出ToolStripMenuItem});
             this.iconCM.Name = "iconCM";
-            this.iconCM.Size = new System.Drawing.Size(61, 4);
+            this.iconCM.Size = new System.Drawing.Size(153, 92);
             // 
             // information
             // 
@@ -100,6 +108,25 @@
             this.information.Size = new System.Drawing.Size(0, 20);
             this.information.TabIndex = 3;
             this.information.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // 退出ToolStripMenuItem
+            // 
+            this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.退出ToolStripMenuItem.Text = "退出";
+            this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
+            // 
+            // 设置ToolStripMenuItem
+            // 
+            this.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem";
+            this.设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.设置ToolStripMenuItem.Text = "设置";
+            // 
+            // 模式1ToolStripMenuItem
+            // 
+            this.模式1ToolStripMenuItem.Name = "模式1ToolStripMenuItem";
+            this.模式1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.模式1ToolStripMenuItem.Text = "模式1";
             // 
             // Form1
             // 
@@ -119,6 +146,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.iconCM.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,6 +161,9 @@
         private System.Windows.Forms.NotifyIcon icon;
         private System.Windows.Forms.ContextMenuStrip iconCM;
         private System.Windows.Forms.Label information;
+        private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 设置ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 模式1ToolStripMenuItem;
     }
 }
 

@@ -139,6 +139,17 @@ namespace LockPC
             this.passwordBox.Text = "";
         }
 
+        private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("您确定要退出程序吗？", "确认退出", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                this.icon.Visible = false;
+                this.Close();
+                this.Dispose();
+                Application.Exit();
+            }
+        }
+
    
 
 
