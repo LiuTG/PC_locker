@@ -30,22 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.password = new System.Windows.Forms.TextBox();
+            this.passwordBox = new System.Windows.Forms.TextBox();
             this.tip = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.enter = new System.Windows.Forms.Button();
             this.icon = new System.Windows.Forms.NotifyIcon(this.components);
             this.iconCM = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.information = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // password
+            // passwordBox
             // 
-            this.password.Location = new System.Drawing.Point(72, 114);
-            this.password.Name = "password";
-            this.password.PasswordChar = '*';
-            this.password.Size = new System.Drawing.Size(120, 21);
-            this.password.TabIndex = 0;
-            this.password.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.passwordBox.Location = new System.Drawing.Point(72, 114);
+            this.passwordBox.Name = "passwordBox";
+            this.passwordBox.PasswordChar = '*';
+            this.passwordBox.Size = new System.Drawing.Size(120, 21);
+            this.passwordBox.TabIndex = 0;
+            this.passwordBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // tip
             // 
@@ -82,11 +83,23 @@
             this.icon.Icon = ((System.Drawing.Icon)(resources.GetObject("icon.Icon")));
             this.icon.Text = "PC_Locker";
             this.icon.Visible = true;
+            this.icon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.icon_MouseDoubleClick);
             // 
             // iconCM
             // 
             this.iconCM.Name = "iconCM";
             this.iconCM.Size = new System.Drawing.Size(61, 4);
+            // 
+            // information
+            // 
+            this.information.AutoSize = true;
+            this.information.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.information.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.information.Location = new System.Drawing.Point(70, 166);
+            this.information.Name = "information";
+            this.information.Size = new System.Drawing.Size(0, 20);
+            this.information.TabIndex = 3;
+            this.information.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -95,9 +108,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.information);
             this.Controls.Add(this.enter);
             this.Controls.Add(this.tip);
-            this.Controls.Add(this.password);
+            this.Controls.Add(this.passwordBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Name = "Form1";
@@ -112,12 +126,13 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox password;
+        private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.Label tip;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button enter;
         private System.Windows.Forms.NotifyIcon icon;
         private System.Windows.Forms.ContextMenuStrip iconCM;
+        private System.Windows.Forms.Label information;
     }
 }
 
