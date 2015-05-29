@@ -29,54 +29,75 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.password = new System.Windows.Forms.TextBox();
+            this.tip = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.enter = new System.Windows.Forms.Button();
+            this.icon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.iconCM = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SuspendLayout();
             // 
-            // textBox1
+            // password
             // 
-            this.textBox1.Location = new System.Drawing.Point(76, 131);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.password.Location = new System.Drawing.Point(72, 114);
+            this.password.Name = "password";
+            this.password.PasswordChar = '*';
+            this.password.Size = new System.Drawing.Size(120, 21);
+            this.password.TabIndex = 0;
+            this.password.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // label1
+            // tip
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 106);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(173, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "请输入密码或者Go out。。。。";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.tip.AutoSize = true;
+            this.tip.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tip.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.tip.Location = new System.Drawing.Point(69, 94);
+            this.tip.Name = "tip";
+            this.tip.Size = new System.Drawing.Size(164, 17);
+            this.tip.TabIndex = 1;
+            this.tip.Text = "请输入密码或者你可以消失了";
+            this.tip.Click += new System.EventHandler(this.label1_Click);
             // 
             // timer1
             // 
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // button1
+            // enter
             // 
-            this.button1.Location = new System.Drawing.Point(76, 169);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "进入";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.enter.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.enter.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.enter.Location = new System.Drawing.Point(72, 141);
+            this.enter.Name = "enter";
+            this.enter.Size = new System.Drawing.Size(80, 22);
+            this.enter.TabIndex = 2;
+            this.enter.Text = "进入";
+            this.enter.UseVisualStyleBackColor = false;
+            this.enter.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // icon
+            // 
+            this.icon.ContextMenuStrip = this.iconCM;
+            this.icon.Icon = ((System.Drawing.Icon)(resources.GetObject("icon.Icon")));
+            this.icon.Text = "PC_Locker";
+            this.icon.Visible = true;
+            // 
+            // iconCM
+            // 
+            this.iconCM.Name = "iconCM";
+            this.iconCM.Size = new System.Drawing.Size(61, 4);
             // 
             // Form1
             // 
-            this.AcceptButton = this.button1;
+            this.AcceptButton = this.enter;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.enter);
+            this.Controls.Add(this.tip);
+            this.Controls.Add(this.password);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Name = "Form1";
@@ -91,10 +112,12 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox password;
+        private System.Windows.Forms.Label tip;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button enter;
+        private System.Windows.Forms.NotifyIcon icon;
+        private System.Windows.Forms.ContextMenuStrip iconCM;
     }
 }
 

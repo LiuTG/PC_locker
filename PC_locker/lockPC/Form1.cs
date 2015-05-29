@@ -34,6 +34,16 @@ namespace LockPC
 
             //启动定时器
             this.timer1.Enabled = true;
+
+            //获取当前窗口大小
+            int height = this.Height;
+            int width = this.Width;
+            //提示信息位置
+            this.tip.Location = new Point(width/2 - 74, height/2 - 40);
+            //密码框位置：当前窗口大小-0.5*密码框长度
+            this.password.Location = new Point(width/2 - 60,height/2 - 11);
+            //确定按钮位置
+            this.enter.Location = new Point(width/2 - 40, height/2 + 30);
             
             
            
@@ -41,7 +51,7 @@ namespace LockPC
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if("q87623460" == this.textBox1.Text)
+            if("q87623460" == this.password.Text)
             {
                 //窗口最小化
                 this.WindowState = FormWindowState.Minimized;
@@ -80,6 +90,7 @@ namespace LockPC
             {
                 e.Handled = true;
             }
+           
         }
 
         private void label1_Click(object sender, EventArgs e)
