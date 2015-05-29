@@ -1,10 +1,1 @@
 C:\Users\LTG\Documents\GitHub\PC_locker\bin\Debug\LockPC.exe.config
-C:\Users\LTG\Documents\GitHub\PC_locker\PC_locker\LockPC\bin\Debug\LockPC.exe.config
-C:\Users\LTG\Documents\GitHub\PC_locker\PC_locker\LockPC\bin\Debug\LockPC.exe
-C:\Users\LTG\Documents\GitHub\PC_locker\PC_locker\LockPC\bin\Debug\LockPC.pdb
-C:\Users\LTG\Documents\GitHub\PC_locker\PC_locker\LockPC\obj\Debug\LockPC.csprojResolveAssemblyReference.cache
-C:\Users\LTG\Documents\GitHub\PC_locker\PC_locker\LockPC\obj\Debug\LockPC.Form1.resources
-C:\Users\LTG\Documents\GitHub\PC_locker\PC_locker\LockPC\obj\Debug\LockPC.Properties.Resources.resources
-C:\Users\LTG\Documents\GitHub\PC_locker\PC_locker\LockPC\obj\Debug\LockPC.csproj.GenerateResource.Cache
-C:\Users\LTG\Documents\GitHub\PC_locker\PC_locker\LockPC\obj\Debug\LockPC.exe
-C:\Users\LTG\Documents\GitHub\PC_locker\PC_locker\LockPC\obj\Debug\LockPC.pdb
