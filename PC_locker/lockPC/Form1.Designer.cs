@@ -32,14 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.tip = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.kill_timer = new System.Windows.Forms.Timer(this.components);
             this.enter = new System.Windows.Forms.Button();
             this.icon = new System.Windows.Forms.NotifyIcon(this.components);
             this.iconCM = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.information = new System.Windows.Forms.Label();
-            this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.模式1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.information = new System.Windows.Forms.Label();
+            this.more_try_timer = new System.Windows.Forms.Timer(this.components);
             this.iconCM.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +51,7 @@
             this.passwordBox.PasswordChar = '*';
             this.passwordBox.Size = new System.Drawing.Size(120, 21);
             this.passwordBox.TabIndex = 0;
-            this.passwordBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.passwordBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.passwordBox_KeyDown);
             // 
             // tip
             // 
@@ -64,10 +65,10 @@
             this.tip.Text = "请输入密码或者你可以消失了";
             this.tip.Click += new System.EventHandler(this.label1_Click);
             // 
-            // timer1
+            // kill_timer
             // 
-            this.timer1.Interval = 10;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.kill_timer.Interval = 10;
+            this.kill_timer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // enter
             // 
@@ -96,7 +97,27 @@
             this.设置ToolStripMenuItem,
             this.退出ToolStripMenuItem});
             this.iconCM.Name = "iconCM";
-            this.iconCM.Size = new System.Drawing.Size(153, 92);
+            this.iconCM.Size = new System.Drawing.Size(108, 70);
+            // 
+            // 模式1ToolStripMenuItem
+            // 
+            this.模式1ToolStripMenuItem.Name = "模式1ToolStripMenuItem";
+            this.模式1ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.模式1ToolStripMenuItem.Text = "模式1";
+            // 
+            // 设置ToolStripMenuItem
+            // 
+            this.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem";
+            this.设置ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.设置ToolStripMenuItem.Text = "设置";
+            this.设置ToolStripMenuItem.Click += new System.EventHandler(this.设置ToolStripMenuItem_Click);
+            // 
+            // 退出ToolStripMenuItem
+            // 
+            this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.退出ToolStripMenuItem.Text = "退出";
+            this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
             // information
             // 
@@ -109,24 +130,9 @@
             this.information.TabIndex = 3;
             this.information.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // 退出ToolStripMenuItem
+            // more_try_timer
             // 
-            this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.退出ToolStripMenuItem.Text = "退出";
-            this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
-            // 
-            // 设置ToolStripMenuItem
-            // 
-            this.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem";
-            this.设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.设置ToolStripMenuItem.Text = "设置";
-            // 
-            // 模式1ToolStripMenuItem
-            // 
-            this.模式1ToolStripMenuItem.Name = "模式1ToolStripMenuItem";
-            this.模式1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.模式1ToolStripMenuItem.Text = "模式1";
+            this.more_try_timer.Tick += new System.EventHandler(this.more_try_timer_Tick);
             // 
             // Form1
             // 
@@ -156,7 +162,7 @@
 
         private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.Label tip;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer kill_timer;
         private System.Windows.Forms.Button enter;
         private System.Windows.Forms.NotifyIcon icon;
         private System.Windows.Forms.ContextMenuStrip iconCM;
@@ -164,6 +170,7 @@
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 设置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 模式1ToolStripMenuItem;
+        private System.Windows.Forms.Timer more_try_timer;
     }
 }
 

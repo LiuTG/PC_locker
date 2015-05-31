@@ -20,6 +20,9 @@ namespace LockPC
         private int height;
         //当前窗口宽度
         private int width;
+        //计数器：用于记录某次动作的发生次数
+        private int times = 0;
+
         [DllImport("user32.dll")]
 
         private static extern IntPtr GetForegroundWindow();
@@ -37,7 +40,7 @@ namespace LockPC
             this.WindowState = FormWindowState.Maximized;
             this.TopMost = true;
             //启动定时器
-            this.timer1.Enabled = true;
+            this.kill_timer.Enabled = true;
 
             //部分2：设置窗口布局
             //获取当前窗口大小
@@ -56,8 +59,16 @@ namespace LockPC
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            if ("q87623460" == this.passwordBox.Text)
+            //记录密码输入次数
+            times++;
+            //当密码输入为空时，显示提示
+            if (this.passwordBox.Text == "")
+            {
+                //密码不正确时显示提示信息
+                this.information.Text = "密码不能为空!";
+                this.information.Location = new Point(width / 2 - this.information.Width / 2, 30);
+            }
+            else if ("q87623460" == this.passwordBox.Text)
             {
                 //窗口最小化
                 this.WindowState = FormWindowState.Minimized;
@@ -65,15 +76,57 @@ namespace LockPC
                 this.ShowInTaskbar = false;
                 //托盘显示
 
-                //关闭定时器
-                this.timer1.Enabled = false;
+                //关闭阻止任务管理器的定时器
+                this.kill_timer.Enabled = false;
 
             }
             else 
             {
-                //密码不正确时显示提示信息
-                this.information.Text = "密码不正确!你可以离开了，不用再试了！";
-                this.information.Location = new Point(width / 2 - this.information.Width / 2, 30);
+                
+                switch(times)
+                {
+                    //当密码输入次数小于3次时，判断为手误
+                    case 1:
+                    case 2:
+                        //密码不正确时显示提示信息
+                        this.information.Text = "密码不正确!";
+                        this.information.Location = new Point(width / 2 - this.information.Width / 2, 30);
+                        //将密码框清空
+                        this.passwordBox.Text = "";
+                        break;
+                    case 3:
+                        //密码不正确时显示提示信息
+                        this.information.Text = "密码不正确!已启动防御模式，已关闭输入系统，你可以离开了！";
+                        this.information.Location = new Point(width / 2 - this.information.Width / 2, 30);
+                        //将密码框清空
+                        this.passwordBox.Text = "";
+
+                        //大于3次判定为恶意输入，进入非主人模式，启动定时器，关闭输入框10秒
+                        //关闭输入框
+                        this.passwordBox.Enabled = false;
+                        //设置定时器
+                        this.more_try_timer.Interval = 1000*10;
+                        this.more_try_timer.Enabled = true;
+                        //停用窗口默认按钮，防止在进入关闭输入框状态按下回车使times计数值增加的误操作
+                        this.enter.Enabled = false;
+                        break;
+                    default:
+                        //大于3次判定为恶意输入，进入非主人模式，启动定时器，关闭输入框120秒
+                        //密码不正确时显示提示信息
+                        this.information.Text = "密码不正确!已启动防御模式，已彻底关闭输入系统，你可以离开了！";
+                        this.information.Location = new Point(width / 2 - this.information.Width / 2, 30);
+                        //将密码框清空
+                        this.passwordBox.Text = "";
+                      
+                        //关闭输入框
+                        this.passwordBox.Enabled = false;
+                        //设置定时器
+                        this.more_try_timer.Interval = 1000*120;
+                        this.more_try_timer.Enabled = true;
+                        //停用窗口默认按钮，防止在进入关闭输入框状态按下回车使times计数值增加的误操作
+                        this.enter.Enabled = false;
+                        break;                                                           
+                }
             }
         }
 
@@ -102,15 +155,12 @@ namespace LockPC
             {
                 e.Handled = true;
             }
-           
+            //屏蔽徽标键
+
+
         }
 
         private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -122,7 +172,7 @@ namespace LockPC
             this.WindowState = FormWindowState.Maximized;
             this.TopMost = true;
             //启动定时器
-            this.timer1.Enabled = true;
+            this.kill_timer.Enabled = true;
            
 
             //部分2：设置窗口布局
@@ -148,6 +198,32 @@ namespace LockPC
                 this.Dispose();
                 Application.Exit();
             }
+        }
+
+        private void 设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void more_try_timer_Tick(object sender, EventArgs e)
+        {
+            //等待时间到后重新开启输入框并清除提示信息
+            this.passwordBox.Enabled = true;
+            this.information.Text = "";
+            this.more_try_timer.Enabled = false;
+            //再次恢复窗口默认按钮  
+            this.enter.Enabled = true;
+        }
+
+        private void passwordBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+            if(times<3)
+            {
+                //当用户再次输入密码时自动清除提示信息
+                this.information.Text = "";
+            }
+  
         }
 
    
